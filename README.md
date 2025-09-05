@@ -166,7 +166,7 @@ These definitions make the **BI dashboard explainable** to non-quant stakeholder
     ├── portfolio_var_cvar.png
     ├── correlation_heatmap.png
     └── drawdown_chart.png
-
+```text
 
 ---
 
