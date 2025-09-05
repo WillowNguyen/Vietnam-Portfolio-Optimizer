@@ -14,8 +14,7 @@ It applies **Modern Portfolio Theory** (Efficient Frontier, Max Sharpe, Min Vol)
 5. [KPI Definitions (for stakeholders)](#-kpi-definitions-for-stakeholders)
 6. [How to Reproduce](#-how-to-reproduce)
 7. [Assumptions, Limitations & Next Steps](#-assumptions-limitations--next-steps)
-8. [Repository Structure](#-repository-structure)
-9. [Author](#-author)
+8. [Author](#-author)
 
 ---
 
@@ -145,28 +144,6 @@ These definitions make the **BI dashboard explainable** to non-quant stakeholder
 - Parameterize **risk-free rate** and **stress scenarios**  
 - Export **weight reports** & **data lineage** to BI tools (Power BI/Tableau)  
 - Optional: **Streamlit app** for interactive what-if analysis
-
----
-
-## 📁 Repository Structure
-```text
-.
-├── README.md
-├── Notebooks/
-│   └── Portfolio_Optimizer.ipynb
-└── Results/
-    ├── price_ma_candlestick.png
-    ├── daily_return_distribution.png
-    ├── efficient_frontier.png
-    ├── monte_carlo_simulation.png
-    ├── max_sharpe_allocation.png
-    ├── performance_vs_benchmarks.png
-    ├── risk_return_profile.png
-    ├── rolling_volatility.png
-    ├── portfolio_var_cvar.png
-    ├── correlation_heatmap.png
-    └── drawdown_chart.png
-```text
 
 ---
 
