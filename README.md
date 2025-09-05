@@ -45,10 +45,10 @@ It applies **Modern Portfolio Theory** (Efficient Frontier, Max Sharpe, Min Vol)
 ![Efficient Frontier](Results/efficient_frontier.png)
 
 **Monte Carlo (return–vol cloud)**
-![Monte Carlo](Results/monte_carlo_scatter.png)
+![Monte Carlo](Results/monte_carlo_simulation.png)
 
 **Optimal weights (example: Max Sharpe)**
-![Weights](Results/weights_pie.png)
+![Weights](Results/max_sharpe_allocation.png)
 
 **Portfolio vs benchmarks (cumulative)**
 ![Performance vs Benchmarks](Results/performance_vs_benchmarks.png)
@@ -65,9 +65,9 @@ It applies **Modern Portfolio Theory** (Efficient Frontier, Max Sharpe, Min Vol)
 
 **Correlation & drawdown**
 ![Correlation Heatmap](Results/correlation_heatmap.png)
-![Drawdown](Results/drawdown_curve.png)
+![Drawdown](Results/drawdown_chart.png)
 
-### KPI Snapshot (reproducible)
+### KPI Snapshot
 - **Portfolio (optimized):** ~**28.04%** annual return, **~11.12%** annual volatility, high Sharpe  
 - **VNINDEX:** ~31.84% annual volatility  
 - **VN30:** ~31.40% annual volatility  
@@ -77,14 +77,6 @@ It applies **Modern Portfolio Theory** (Efficient Frontier, Max Sharpe, Min Vol)
 > • Frontier + weights make portfolio choices **defensible** in committees.  
 > • VaR/CVaR & drawdown enable **policy-grade risk limits** and “what-if” reporting.  
 > • The pipeline is **reusable** for CIO dashboards, product P&L, or PM workflows.
-
----
-
-## ▶️ How to Reproduce
-1. Open `Notebooks/Portfolio_Optimizer.ipynb` in **Colab/Jupyter**
-2. Install deps (first cells handle `pandas`, `numpy`, `scipy`, `plotly`, `kaleido`, `vnstock`)
-3. Run all cells — figures will be saved to `/Results`
-4. Change the stock universe or constraints to explore scenarios (long-only, sector caps, etc.)
 
 
 ---
