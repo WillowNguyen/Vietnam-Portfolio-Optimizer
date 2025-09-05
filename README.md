@@ -1,89 +1,103 @@
-# 📊 Vietnam Stock Portfolio Optimizer  
-*A Business Intelligence project turning market data into investable insights*
+# 📊 Vietnam Stock Portfolio Optimizer
+*A Business Intelligence project that turns Vietnam market data into investable, decision-ready insights.*
 
-This repository showcases my **individual project** building a **portfolio optimization and risk analytics** workflow for Vietnam’s stock market using **Python**.  
-It applies **Modern Portfolio Theory** (Efficient Frontier, Max Sharpe, Min Vol), **Monte Carlo simulation**, and **risk metrics** (VaR/CVaR) — then visualizes results so **investors and BI teams** can make better decisions with confidence.
+This is my project that builds an end-to-end **portfolio optimization & risk analytics** workflow using Python.  
+It applies **Modern Portfolio Theory** (Efficient Frontier, Max Sharpe, Min Vol), **Monte Carlo simulation**, and **risk metrics** (VaR/CVaR, drawdown), then visualizes the results so **executives and BI stakeholders** can make clear, defensible decisions.
 
 ---
 
-## 🎯 Business Problem
-How can a portfolio be constructed to **maximize risk-adjusted return** while being **transparent and explainable** for stakeholders?  
-This project answers it by delivering a BI-friendly analysis: **clear inputs → robust analytics → decision-ready visuals**.
+## 🎯 Executive Summary
+**Business problem:** how to construct a portfolio that **maximizes risk-adjusted returns** and remains **explainable** to non-technical decision makers.  
+**What this repo delivers:** a BI-friendly flow — **clean inputs → robust analytics → decision-ready visuals** — with transparent trade-offs between risk and return.
 
-**Key business goals**
-- Identify optimal portfolios (Max Sharpe, Min Vol) from VN stocks
-- Benchmark against **VNINDEX** / **VN30**
-- Quantify risk with **VaR/CVaR** and visualize drawdowns
-- Provide **repeatable**, auditable analytics for reporting
+**Headlines**
+- Optimal portfolio achieved **~28.04% annualized return** with **~11.12% annualized volatility**  
+- Outperformed **VNINDEX** and approached **VN30** while maintaining **much lower volatility**  
+- Full stack of **risk governance**: VaR/CVaR, drawdown, correlation structure
+
+*(All numbers are reproducible from the notebook; see “How to Reproduce”.)*
 
 ---
 
 ## 📊 Data
-- **Universe**: Vietnamese listed stocks (blue chips across HOSE/HNX/UPCOM)  
-- **Source**: VNStock API (prices), Pandas for processing  
-- **Frequency**: Daily close (multi-year history)  
-- **Benchmarks**: VNINDEX, VN30  
+- **Universe:** 10 liquid Vietnam stocks across key sectors (HOSE/HNX/UPCOM)
+- **Benchmarks:** VNINDEX, VN30
+- **Frequency:** Daily prices (multi-year)
+- **Source:** [`vnstock` API] processed in notebook (no proprietary data stored)
 
-> Data is fetched/processed in the notebook; no proprietary data is stored in the repo.
+**Example market context (raw trends)**
+![Time Series + MA](Results/price_ma_candlestick.png)
+*Candlestick + MA20/MA50 + volume*
 
 ---
 
 ## ⚙️ Methodology (BI-ready)
-1) **Data prep & sanity checks**
-   - Cleaning, alignment of trading calendars, log-returns, covariance estimation
-
-2) **Monte Carlo Simulation (10k+ portfolios)**
-   - Random weight generation with constraints (long-only, sum to 1)
-   - Compute **expected return**, **volatility**, **Sharpe ratio**
-
-3) **Efficient Frontier & Optimal Points**
-   - Plot frontier; locate **Max Sharpe** and **Min Volatility** portfolios
-   - Extract **optimal weights**, risk/return, and KPIs
-
-4) **Risk Intelligence**
-   - **Parametric/ Historical VaR** and **CVaR**
-   - **Drawdown** analysis for stress view
-
-5) **Benchmarking & Attribution**
-   - Compare cumulative performance vs **VNINDEX** / **VN30**
-   - Discuss risk-adjusted improvements and sensitivity
+1) **Data prep & sanity checks** — align trading calendars, log-returns, covariance
+2) **Monte Carlo simulation (10k+ portfolios)** — random long-only weights, compute **expected return / volatility / Sharpe**
+3) **Efficient Frontier & optimal portfolios** — extract **Max Sharpe** and **Min Vol**, visualize trade-offs and weights
+4) **Risk Intelligence** — **VaR/CVaR** (historical & parametric), **drawdown** analysis, distribution of daily returns
+5) **Benchmarking & attribution** — compare cumulative performance with **VNINDEX/VN30**, highlight risk-adjusted outperformance
 
 ---
 
 ## 🚀 Results & Business Impact
-- Optimized portfolios deliver **superior risk-adjusted performance** vs market benchmarks  
-- Clear visualization helps **non-technical stakeholders** understand trade-offs  
-- Risk metrics (VaR/CVaR, drawdown) support **scenario planning** and **policy limits**
-
-### Figures
-**Efficient Frontier (with optimal points)**  
+**Efficient frontier**
 ![Efficient Frontier](Results/efficient_frontier.png)
 
-**Monte Carlo cloud of portfolios**  
+**Monte Carlo (return–vol cloud)**
 ![Monte Carlo](Results/monte_carlo_scatter.png)
 
-**Portfolio vs Benchmarks (cumulative return)**  
+**Optimal weights (example: Max Sharpe)**
+![Weights](Results/weights_pie.png)
+
+**Portfolio vs benchmarks (cumulative)**
 ![Performance vs Benchmarks](Results/performance_vs_benchmarks.png)
 
-**Optimal Weights**  
-![Weights Pie](Results/weights_pie.png)
+**Risk–Return: stocks vs portfolios**
+![Risk–Return](Results/risk_return_profile.png)
 
-**Correlation Structure**  
+**Risk governance (VaR/CVaR & distribution)**
+![VaR & CVaR](Results/portfolio_var_cvar.png)
+![Return Distribution](Results/daily_return_distribution.png)
+
+**Stability over time**
+![Rolling Volatility](Results/rolling_volatility.png)
+
+**Correlation & drawdown**
 ![Correlation Heatmap](Results/correlation_heatmap.png)
+![Drawdown](Results/drawdown_curve.png)
 
-**Risk Metrics Summary**  
-![Risk Table](Results/risk_metrics_table.png)
+### KPI Snapshot (reproducible)
+- **Portfolio (optimized):** ~**28.04%** annual return, **~11.12%** annual volatility, high Sharpe  
+- **VNINDEX:** ~31.84% annual volatility  
+- **VN30:** ~31.40% annual volatility  
+- **VaR/CVaR (1-day, 95%)** within **~1.0%–1.3%** loss band
 
-> All figures are reproducible from the notebook in `/Notebooks`.
+> **BI takeaways:**  
+> • Frontier + weights make portfolio choices **defensible** in committees.  
+> • VaR/CVaR & drawdown enable **policy-grade risk limits** and “what-if” reporting.  
+> • The pipeline is **reusable** for CIO dashboards, product P&L, or PM workflows.
 
 ---
 
-## 💡 Insights for BA/BI Stakeholders
-- **Explainability**: Frontier + weights make portfolio choices defensible in committees.
-- **Risk Governance**: VaR/CVaR and drawdown provide policy-grade risk controls.
-- **Scenario-friendly**: Easy to rerun with different universes or constraints.
-- **Reusable patterns**: The same pipeline fits product P&L, fund reporting, or CIO dashboards.
+## ▶️ How to Reproduce
+1. Open `Notebooks/Portfolio_Optimizer.ipynb` in **Colab/Jupyter**
+2. Install deps (first cells handle `pandas`, `numpy`, `scipy`, `plotly`, `kaleido`, `vnstock`)
+3. Run all cells — figures will be saved to `/Results`
+4. Change the stock universe or constraints to explore scenarios (long-only, sector caps, etc.)
+
 
 ---
 
-## 📂 Repository Structure
+## 🛠️ Tech Stack
+- **Python**: pandas, numpy, scipy, plotly/kaleido
+- **Finance**: Modern Portfolio Theory, Efficient Frontier
+- **Risk**: VaR, CVaR, drawdown
+- **BI Mindset**: From raw data → KPIs → executive-ready visuals
+
+---
+
+## 👤 Author
+**Nguyen Thi Thanh Truc** — Business Analyst / BI Candidate  
+Turning complex market data into **clear stories, KPIs, and defensible decisions**.
+
